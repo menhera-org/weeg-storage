@@ -16,3 +16,5 @@
   limitations under the License.
   @license
 */
+
+export { StorageItem } from './StorageItem';
