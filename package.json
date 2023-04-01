@@ -1,14 +1,14 @@
 {
-  "name": "weeg-library-template",
+  "name": "weeg-storage",
   "version": "0.1.0",
-  "description": "WebExtensions Experts Groups library template",
+  "description": "WebExtensions Experts Groups storage library",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/menhera-org/weeg-library-template.git"
+    "url": "git+https://github.com/menhera-org/weeg-storage.git"
   },
   "keywords": [
     "weeg"
@@ -16,12 +16,17 @@
   "author": "WebExtensions Experts Group",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/menhera-org/weeg-library-template/issues"
+    "url": "https://github.com/menhera-org/weeg-storage/issues"
   },
-  "homepage": "https://github.com/menhera-org/weeg-library-template#readme",
+  "homepage": "https://github.com/menhera-org/weeg-storage#readme",
   "devDependencies": {
+    "@types/webextension-polyfill": "^0.10.0",
     "typescript": "^5.0.3"
   },
   "type": "module",
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "webextension-polyfill": "^0.10.0",
+    "weeg-events": "^0.1.0"
+  }
 }

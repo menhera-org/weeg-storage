@@ -1,2 +1,2 @@
-# weeg-library-template
-WebExtensions Experts Group library template (for internal use)
+# weeg-storage
+WebExtensions Experts Group storage library
