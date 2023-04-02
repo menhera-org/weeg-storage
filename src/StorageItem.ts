@@ -29,7 +29,7 @@ export class StorageItem<T> {
   public static readonly AREA_SYNC = 'sync';
   public static readonly AREA_MANAGED = 'managed';
 
-  private readonly area: browser.Storage.StorageArea
+  private readonly area: browser.Storage.StorageArea | undefined;
   public readonly key: string;
   public readonly areaName: 'managed' | 'local' | 'sync';
   public readonly defaultValue: T;
@@ -41,6 +41,11 @@ export class StorageItem<T> {
   public constructor(key: string, defaultValue: T, area: StorageArea) {
     this.key = key;
     this.defaultValue = defaultValue;
+    this.areaName = area;
+    if (!browser.storage) {
+      console.warn('browser.storage is not available, storage will not work');
+      return;
+    }
     switch (area) {
       case StorageItem.AREA_LOCAL: {
         this.area = browser.storage.local;
@@ -83,6 +88,7 @@ export class StorageItem<T> {
 
   private async getRawValue(): Promise<T | undefined> {
     try {
+      if (!this.area) return undefined;
       const data = await this.area.get(this.key);
       const value = data[this.key];
       return value as T;
@@ -110,6 +116,7 @@ export class StorageItem<T> {
     if (this.areaName == 'managed') {
       throw new Error('Cannot clear managed storage');
     }
+    if (!this.area) return;
     await this.area.remove(this.key);
   }
 
@@ -117,6 +124,7 @@ export class StorageItem<T> {
     if (this.areaName == 'managed') {
       throw new Error('Cannot set managed storage');
     }
+    if (!this.area) return;
     await this.area.set({ [this.key]: value });
   }
 
