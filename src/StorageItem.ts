@@ -86,6 +86,10 @@ export class StorageItem<T> {
     });
   }
 
+  public get storageAvailable(): boolean {
+    return !!this.area;
+  }
+
   private async getRawValue(): Promise<T | undefined> {
     try {
       if (!this.area) return undefined;
