@@ -1,6 +1,6 @@
 {
   "name": "weeg-storage",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "WebExtensions Experts Groups storage library",
   "main": "dist/index.js",
   "scripts": {
@@ -23,10 +23,9 @@
     "@types/webextension-polyfill": "^0.10.0",
     "typescript": "^5.0.3"
   },
-  "type": "module",
   "types": "dist/index.d.ts",
   "dependencies": {
     "webextension-polyfill": "^0.10.0",
-    "weeg-events": "^0.1.0"
+    "weeg-events": "^0.3.0"
   }
 }
