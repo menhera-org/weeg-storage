@@ -22,6 +22,8 @@
 import browser from 'webextension-polyfill';
 import { EventSink } from 'weeg-events';
 
+import { GlobalStorageObserver } from './GlobalStorageObserver.js';
+
 export type StorageArea = 'local' | 'sync' | 'managed';
 
 export class StorageItem<T> {
@@ -70,7 +72,7 @@ export class StorageItem<T> {
       }
     }
 
-    browser.storage.onChanged.addListener((changes, areaName) => {
+    GlobalStorageObserver.onChanged.addListener(({ changes, areaName }) => {
       if (!(this.key in changes)) return;
       if (areaName != this.areaName) return;
       const change = changes[this.key];
